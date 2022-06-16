@@ -1,5 +1,5 @@
 public class MultiLambda {
-    public static void main(String args[]){
+    public static void main(String args[]) throws Exception{
 
         Thread t1 = new Thread(()->{
             for(int i=0;i<5;i++) {
@@ -17,6 +17,11 @@ public class MultiLambda {
         t1.start();
         try{Thread.sleep(100);}catch (Exception e){}
         t2.start();
+
+        t1.join();
+        t2.join();
+        System.out.println(t2.isAlive());
+        System.out.println("Bye");
     }
 
 }
